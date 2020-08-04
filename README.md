@@ -1,2 +1,2 @@
-# CompetitiveLibrary
-CompetitiveLibrary is CPP template and library. 
+# CodeTrash
+CodeTrash is CPP template and library for Competitive programming. 
