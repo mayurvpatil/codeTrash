@@ -38,6 +38,11 @@ void testCasesIterate() {
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL); cout.tie(NULL);
-  testCasesIterate();
-  //solve();
+  
+  // Enable INPUT while debugging
+  // freopen("op", "w", stdout);
+  // freopen("input", "r", stdin);
+
+  //testCasesIterate();
+  solve();
 }
