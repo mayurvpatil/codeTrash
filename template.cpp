@@ -19,6 +19,9 @@ typedef pair<ll, ll> pll;
 
 template <typename T> 
 vector<T> rcin( int n) { vector<T> v;while(n > 0) { T t;cin >> t;v.push_back(t);n--;}return v;} // auto vec = rcin<ll>(5);
+vector<string> split(string s, string del) { int t = 0; vector<string> v; while(t != -1) { t = s.find(del); v.push_back(s.substr(0, t)); if(s.length() > t+del.length()) {s = s.substr(t+del.length(), s.length());}}return v;} 
+// split(string, del): vector<string>
+
 // ----------- SMART END ---------
 
 void solve() {
