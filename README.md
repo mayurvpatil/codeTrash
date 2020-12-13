@@ -57,7 +57,7 @@
 
 ## Licence
 
-*The code in this archive is provided free of charge to be used by anyone for any reason whatsoever without any obligations. You can download, copy, modify and redistribute this code at your will.*
+*The code in this repository is provided free of charge to be used by anyone for any reason whatsoever without any obligations. You can download, copy, modify and redistribute this code at your will.*
 
 
 &nbsp;&nbsp;
