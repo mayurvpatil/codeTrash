@@ -26,9 +26,9 @@
 
 1. *Add User Snippet*
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *- File -> Preferances -> User Snippets -> Java -> add content of [cpjava.json](codeTrash/cpjava.json)* 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *- File -> Preferances -> User Snippets -> Java -> add content of [cpjava.json](https://github.com/mayurvpatil/codeTrash/blob/master/cpjava.json)* 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *- Find code of cpjava.json [here](codeTrash/InitialTemplate.java)*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *- Find code of cpjava.json [here](https://github.com/mayurvpatil/codeTrash/blob/master/javaLibrary/InitialTemplate.java)*
 
 2. *Copy path of InitialTemplateLoader.java file*  
 3. *Paste it in Default language  template file location for java in Computetive programming helper extention.*
