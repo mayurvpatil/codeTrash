@@ -1,4 +1,4 @@
-# codeTrash
+# CodeTrash
 
 - *CodeTrash is Competitive programming essentials like setup guide, templates & java template*
 - *This repostoryt is crearted for learning purpose* 
@@ -55,7 +55,7 @@
 - *Add it into java user snippets*
 
 
-# Licence
+## Licence
 
 *The code in this archive is provided free of charge to be used by anyone for any reason whatsoever without any obligations. You can download, copy, modify and redistribute this code at your will.*
 
