@@ -4,7 +4,7 @@
 - *This repostoryt is crearted for learning purpose* 
 - *For any suggestions or update, feel free to raise PR or ISSUE*
 
-# Setup-guide
+## Setup-guide
 ## Contents
 
 - *JAVA* with *Visual studio code (VSCode)*
