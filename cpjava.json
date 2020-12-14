@@ -13,7 +13,7 @@
 		  " * Time: ${CURRENT_HOUR} : ${CURRENT_MINUTE} : ${CURRENT_SECOND} ",
 		  " */",
 		  "",
-		  "public class ${TM_FILENAME_BASE} {",
+		  "class ${TM_FILENAME_BASE} {",
 		  "",
 		  "    public void solve() {",
 		  "",

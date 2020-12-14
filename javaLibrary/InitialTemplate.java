@@ -10,7 +10,7 @@ import java.util.*;
  * Time: ${CURRENT_HOUR} : ${CURRENT_MINUTE} : ${CURRENT_SECOND} 
  */
 
-public class InitialTemplate {
+class InitialTemplate {
 
 	public void solve() {
 

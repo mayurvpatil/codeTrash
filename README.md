@@ -22,27 +22,23 @@
 - *VSCode Extension : [Competitive-programming-helper](https://marketplace.visualstudio.com/items?itemName=DivyanshuAgrawal.competitive-programming-helper)*
 - *Browser plugin extention or add-on [Competitive-companion](https://github.com/jmerle/competitive-companion)*
 
-## Steps to setup
+## Add Snippet
 
-1. *Add User Snippet*
+-  *Add User Snippet*
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *- File -> Preferances -> User Snippets -> Java -> add content of [cpjava.json](https://github.com/mayurvpatil/codeTrash/blob/master/cpjava.json)* 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *- Find code of cpjava.json [here](https://github.com/mayurvpatil/codeTrash/blob/master/javaLibrary/InitialTemplate.java)*
 
-2. *Copy path of InitialTemplateLoader.java file*  
-3. *Paste it in Default language  template file location for java in Computetive programming helper extention.*
- 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *- File -> Preferances -> settings -> extensions -> Computetive programming helper -> Default JAVA template location* 
-&nbsp;
 
 
 ## How to use 
 
-- *Complete all steps mentioned in setup guide once* 
+- *Add User snippet once* 
 - *Open any directory in VSCode*
 - *Find any contest form competetitive programming platform and click on "+" of browsers extension or add-on*
-- *Switch back to VSCode and you'll see text "cpjava" enter Control+Space or Command+Space and ENTER.*
+- *This will create java files for every problem statement*
+- *Switch back to VSCode and enter "cpjava" and Control+Space or Command+Space and ENTER, to load snippet*
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**NOTE :** *Make sure competative programming site is supported by pluggin [Check here](https://github.com/jmerle/competitive-companion)*
 
