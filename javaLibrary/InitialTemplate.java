@@ -1,4 +1,3 @@
-package references;
 import static java.lang.System.exit;
 import java.io.*;
 import java.util.*;
@@ -10,9 +9,15 @@ import java.util.*;
  * Time: ${CURRENT_HOUR} : ${CURRENT_MINUTE} : ${CURRENT_SECOND} 
  */
 
-class InitialTemplate {
+/**
+ * Public 	   - CodeForces
+ * No modifier - CodeChef
+ */
 
-	public void solve() {
+public class InitialTemplate {
+
+	public void solve() throws Exception {
+		
 
 	} // End
 
@@ -24,7 +29,6 @@ class InitialTemplate {
 		if (isMultipleTestCases) {
 			int t = in.getInt();
 			for (int i = 1; i <= t; ++i) {
-				out.print("Case #" + i + ": ");
 				solve();
 			}
 		} else {
@@ -55,7 +59,11 @@ class InitialTemplate {
 			tokenizer = null;
 		}
 
-		public String getLine() {
+		public String getLine() throws Exception {
+			return reader.readLine();
+		}
+
+		public String getString() {
 			while (tokenizer == null || !tokenizer.hasMoreTokens()) {
 				try {
 					tokenizer = new StringTokenizer(reader.readLine());
@@ -67,11 +75,11 @@ class InitialTemplate {
 		}
 
 		public int getInt() {
-			return Integer.parseInt(getLine());
+			return Integer.parseInt(getString());
 		}
 
 		public long getLong() {
-			return Long.parseLong(getLine());
+			return Long.parseLong(getString());
 		}
 
 		public int[] getIntArray(int n) {

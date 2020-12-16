@@ -1,5 +1,5 @@
 {
-	"Java FastIO CP template": {
+	"Java Initial CP template": {
 		"prefix": "cpjava",
 		"body": [
 		  "import static java.lang.System.exit;",
@@ -13,21 +13,25 @@
 		  " * Time: ${CURRENT_HOUR} : ${CURRENT_MINUTE} : ${CURRENT_SECOND} ",
 		  " */",
 		  "",
-		  "class ${TM_FILENAME_BASE} {",
+		  "/**",
+		  " * Public      - CodeForces",
+		  " * No modifier - CodeChef",
+		  " */",
 		  "",
-		  "    public void solve() {",
+		  "${1|public, |} class ${TM_FILENAME_BASE} {",
 		  "",
+		  "    public void solve() throws Exception {",
+		  "       $3",
 		  "    } // End",
 		  "",
 		  "    public ${TM_FILENAME_BASE}() throws Exception {",
-		  "        boolean isMultipleTestCases = true;",
+		  "        boolean isMultipleTestCases = ${2|true,false|};",
 		  "        in = new InputReader(System.in);",
 		  "        out = new PrintWriter(System.out);",
 		  "",
 		  "        if (isMultipleTestCases) {",
 		  "            int t = in.getInt();",
 		  "            for (int i = 1; i <= t; ++i) {",
-		  "                out.print(\"Case #\" + i + \": \");",
 		  "                solve();",
 		  "            }",
 		  "        } else {",
@@ -58,7 +62,11 @@
 		  "            tokenizer = null;",
 		  "        }",
 		  "",
-		  "        public String getLine() {",
+		  "        public String getLine() throws Exception {",
+		  "            return reader.readLine();",
+		  "        }",
+		  "",
+		  "        public String getString() {",
 		  "            while (tokenizer == null || !tokenizer.hasMoreTokens()) {",
 		  "                try {",
 		  "                    tokenizer = new StringTokenizer(reader.readLine());",
@@ -70,11 +78,11 @@
 		  "        }",
 		  "",
 		  "        public int getInt() {",
-		  "            return Integer.parseInt(getLine());",
+		  "            return Integer.parseInt(getString());",
 		  "        }",
 		  "",
 		  "        public long getLong() {",
-		  "            return Long.parseLong(getLine());",
+		  "            return Long.parseLong(getString());",
 		  "        }",
 		  "",
 		  "        public int[] getIntArray(int n) {",
@@ -94,6 +102,6 @@
 		  "}",
 		  ""
 		],
-		"description": "Java FastIO CP template"
+		"description": "Java Initial CP template"
 	  }
 }
