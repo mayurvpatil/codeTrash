@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 29 | [ Tuesday ]
- * Time: 07 : 25 : 23 
+ * Date: 2020 December 30 | [ Wednesday ]
+ * Time: 05 : 11 : 47 
  */
 
 /**
@@ -14,47 +14,86 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class DiameterOfBinaryTree {
+public class MergeTwoBinaryTrees {
 
     public class TreeNode{
-        int val;
+        int val ;
         TreeNode left;
-        TreeNode right ;
+        TreeNode right;
+        TreeNode() {}
     }
 
-    int max = Integer.MIN_VALUE;
+    public void merge(TreeNode a , TreeNode b , TreeNode result) {
 
-    public int findMax(TreeNode root) {
-         if(root == null ) return 0;
-
-        int l =0 , r = 0 ;
-        if(root.left != null ) {
-            l = findMax(root.left);
-        }
-
-        if(root.right != null ) {
-            r = findMax(root.right);
-        }
-
-        if(l+r > max) {
-            max = l+r;
-        }
+        if(a == null && b == null ) return ;
         
-        return 1 + Math.max(l,r);
+        int sum = 0;
+        if(a != null ) {
+            sum += a.val;
+        } 
+
+        if(b != null ) {
+            sum += b.val;
+        } 
+
+        result.val = sum;
+
+        // recursion
+
+        if((a != null && a.left != null) || ( b!= null  && b.left != null)) {
+
+            TreeNode newNode = new TreeNode();
+            result.left = newNode;
+
+            if((a != null && a.left != null) && ( b!= null  && b.left != null)) {
+                merge(a.left, b.left, result.left);
+            } 
+            else if (a!= null && a.left != null ) {
+                merge(a.left, null, result.left);
+            } else {
+                merger(null, b.left, result.left);
+            }
+        }
+
+        if((a != null && a.right != null) || ( b!=null && b.right != null ) ) {
+            TreeNode newNode = new TreeNode();
+            result.right = newNode;
+
+            if((a != null && a.right != null) && ( b!= null  && b.right != null)) {
+                merge(a.right, b.right, result.right);
+            } 
+            else if (a!= null && a.right != null ) {
+                merge(a.right, null, result.right);
+            } else {
+                merger(null, b.right, result.right);
+            }
+            
+        }
+
     }
 
-    public int diameterOfBinaryTree(TreeNode root) {
-        if(root == null ) return 0;
 
-        findMax(root);
-        return max;
+     public TreeNode mergeTrees(TreeNode a, TreeNode b) {
+
+        if(a == null && b == null ) return a;
+
+        if(a == null && b!=null ) return b;
+        if(a!= null &&  b == null) return a;
+
+        TreeNode result = new TreeNode();
+
+        merge(a,b,result);
+        return result;
+
     }
 
     public void solve() throws Exception {
-            
+
+
+
     } // End
 
-    public DiameterOfBinaryTree() throws Exception {
+    public MergeTwoBinaryTrees() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -72,7 +111,7 @@ public class DiameterOfBinaryTree {
 
     public static void main(String[] args) {
         try {
-            new DiameterOfBinaryTree();
+            new MergeTwoBinaryTrees();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

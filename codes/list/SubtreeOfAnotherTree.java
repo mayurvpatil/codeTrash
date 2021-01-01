@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 29 | [ Tuesday ]
- * Time: 07 : 25 : 23 
+ * Date: 2020 December 31 | [ Thursday ]
+ * Time: 05 : 57 : 53 
  */
 
 /**
@@ -14,47 +14,38 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class DiameterOfBinaryTree {
+public class SubtreeOfAnotherTree {
 
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
+    public void getInorderString(TreeNode s , String str ) {
+
+        if(s == null ) return ;
+
+        getInorderString(s.left, str);
+        str += s.val;
+        getInorderString(s.right, str);
     }
 
-    int max = Integer.MIN_VALUE;
+    public boolean isSubtree(TreeNode s, TreeNode t) {
 
-    public int findMax(TreeNode root) {
-         if(root == null ) return 0;
+        String sStr = "";
+        getInorderString(s, sStr);
 
-        int l =0 , r = 0 ;
-        if(root.left != null ) {
-            l = findMax(root.left);
-        }
+        String tStr = "" ;
+        getInorderString(t, tStr);
 
-        if(root.right != null ) {
-            r = findMax(root.right);
-        }
-
-        if(l+r > max) {
-            max = l+r;
-        }
+        return sStr.contains(tStr);
         
-        return 1 + Math.max(l,r);
-    }
-
-    public int diameterOfBinaryTree(TreeNode root) {
-        if(root == null ) return 0;
-
-        findMax(root);
-        return max;
+        
     }
 
     public void solve() throws Exception {
-            
+
+
+
+
     } // End
 
-    public DiameterOfBinaryTree() throws Exception {
+    public SubtreeOfAnotherTree() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -72,7 +63,7 @@ public class DiameterOfBinaryTree {
 
     public static void main(String[] args) {
         try {
-            new DiameterOfBinaryTree();
+            new SubtreeOfAnotherTree();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

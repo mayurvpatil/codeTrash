@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 29 | [ Tuesday ]
- * Time: 07 : 25 : 23 
+ * Date: 2020 December 30 | [ Wednesday ]
+ * Time: 17 : 32 : 35 
  */
 
 /**
@@ -14,47 +14,29 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class DiameterOfBinaryTree {
+public class LowestCommonAncestorBST {
 
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
-    }
+     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+         
+         if(root == null ) return null;
+         if(( p.val <= root.val && q.val >= root.val ) || (p.val >= root.val && q.val <=root.val) ) {
+             return root;
+         }
 
-    int max = Integer.MIN_VALUE;
+        TreeNode l = lowestCommonAncestor(root.left, p , q);
+         if(l != null ) return l;
 
-    public int findMax(TreeNode root) {
-         if(root == null ) return 0;
+        TreeNode r = lowestCommonAncestor(root.right, p, q);
+        if(r != null ) return r;
 
-        int l =0 , r = 0 ;
-        if(root.left != null ) {
-            l = findMax(root.left);
-        }
-
-        if(root.right != null ) {
-            r = findMax(root.right);
-        }
-
-        if(l+r > max) {
-            max = l+r;
-        }
-        
-        return 1 + Math.max(l,r);
-    }
-
-    public int diameterOfBinaryTree(TreeNode root) {
-        if(root == null ) return 0;
-
-        findMax(root);
-        return max;
+        return null;
     }
 
     public void solve() throws Exception {
-            
+        
     } // End
 
-    public DiameterOfBinaryTree() throws Exception {
+    public LowestCommonAncestorBST() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -72,7 +54,7 @@ public class DiameterOfBinaryTree {
 
     public static void main(String[] args) {
         try {
-            new DiameterOfBinaryTree();
+            new LowestCommonAncestorBST();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

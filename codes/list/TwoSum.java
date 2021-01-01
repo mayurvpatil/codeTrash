@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 29 | [ Tuesday ]
- * Time: 07 : 25 : 23 
+ * Date: 2020 December 31 | [ Thursday ]
+ * Time: 07 : 01 : 25 
  */
 
 /**
@@ -14,47 +14,32 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class DiameterOfBinaryTree {
+public class TwoSum {
 
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
-    }
+    public int[] twoSum(int[] nums, int target) {
 
-    int max = Integer.MIN_VALUE;
+        Map<Integer, Integer        
 
-    public int findMax(TreeNode root) {
-         if(root == null ) return 0;
+        for(int i = 0 ; i < nums.length; i++ ) {
 
-        int l =0 , r = 0 ;
-        if(root.left != null ) {
-            l = findMax(root.left);
-        }
+            int n = nums[i];
 
-        if(root.right != null ) {
-            r = findMax(root.right);
-        }
+            if(dp[target-n] != -1) {
+                return new int[]{dp[target-n],i};
+            }
 
-        if(l+r > max) {
-            max = l+r;
+            dp[n] = i;
+
         }
         
-        return 1 + Math.max(l,r);
     }
 
-    public int diameterOfBinaryTree(TreeNode root) {
-        if(root == null ) return 0;
-
-        findMax(root);
-        return max;
-    }
 
     public void solve() throws Exception {
-            
+       
     } // End
 
-    public DiameterOfBinaryTree() throws Exception {
+    public TwoSum() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -72,7 +57,7 @@ public class DiameterOfBinaryTree {
 
     public static void main(String[] args) {
         try {
-            new DiameterOfBinaryTree();
+            new TwoSum();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

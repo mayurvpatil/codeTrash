@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 29 | [ Tuesday ]
- * Time: 07 : 25 : 23 
+ * Date: 2020 December 31 | [ Thursday ]
+ * Time: 08 : 25 : 34 
  */
 
 /**
@@ -14,47 +14,39 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class DiameterOfBinaryTree {
+public class SquaresOfSortedArray {
 
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
-    }
+      public int[] sortedSquares(int[] nums) {
 
-    int max = Integer.MIN_VALUE;
+        int[] result = new int[nums.length];
 
-    public int findMax(TreeNode root) {
-         if(root == null ) return 0;
+        int start = 0; 
+        int end = nums.length-1;
+        int resultIndex = nums.length -1;
 
-        int l =0 , r = 0 ;
-        if(root.left != null ) {
-            l = findMax(root.left);
+        while(start< end) {
+            
+            if(Math.abs(nums[start]) > Math.abs(nums[end])) {
+                result[resultIndex] = nums[start] * nums[start];
+                start++; 
+            } else {
+                result[resultIndex] = nums[end] * nums[end];
+                end--;
+            }
+            resultIndex--;
         }
 
-        if(root.right != null ) {
-            r = findMax(root.right);
-        }
+        return result;      
 
-        if(l+r > max) {
-            max = l+r;
-        }
-        
-        return 1 + Math.max(l,r);
-    }
+      }
 
-    public int diameterOfBinaryTree(TreeNode root) {
-        if(root == null ) return 0;
 
-        findMax(root);
-        return max;
-    }
 
     public void solve() throws Exception {
-            
+       
     } // End
 
-    public DiameterOfBinaryTree() throws Exception {
+    public SquaresOfSortedArray() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -72,7 +64,7 @@ public class DiameterOfBinaryTree {
 
     public static void main(String[] args) {
         try {
-            new DiameterOfBinaryTree();
+            new SquaresOfSortedArray();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);
