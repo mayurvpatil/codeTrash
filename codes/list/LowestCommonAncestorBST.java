@@ -16,6 +16,12 @@ import java.util.*;
 
 public class LowestCommonAncestorBST {
 
+    public class TreeNode{
+        int val;
+        TreeNode left;
+        TreeNode right ;
+    }
+
      public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
          
          if(root == null ) return null;

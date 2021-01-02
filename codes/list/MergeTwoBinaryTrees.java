@@ -51,7 +51,7 @@ public class MergeTwoBinaryTrees {
             else if (a!= null && a.left != null ) {
                 merge(a.left, null, result.left);
             } else {
-                merger(null, b.left, result.left);
+                merge(null, b.left, result.left);
             }
         }
 
@@ -65,7 +65,7 @@ public class MergeTwoBinaryTrees {
             else if (a!= null && a.right != null ) {
                 merge(a.right, null, result.right);
             } else {
-                merger(null, b.right, result.right);
+                merge(null, b.right, result.right);
             }
             
         }

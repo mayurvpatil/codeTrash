@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 31 | [ Thursday ]
- * Time: 05 : 57 : 53 
+ * Date: 2021 January 02 | [ Saturday ]
+ * Time: 17 : 12 : 17 
  */
 
 /**
@@ -14,44 +14,45 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class SubtreeOfAnotherTree {
+  class ProductofArrayExceptSelf {
 
-    public void getInorderString(TreeNode s , String str ) {
 
-        if(s == null ) return ;
-
-        getInorderString(s.left, str);
-        str += s.val;
-        getInorderString(s.right, str);
-    }
-
-    public boolean isSubtree(TreeNode s, TreeNode t) {
-
-        String sStr = "";
-        getInorderString(s, sStr);
-
-        String tStr = "" ;
-        getInorderString(t, tStr);
-
-        return sStr.contains(tStr);
+    public int[] productExceptSelf(int[] nums) {
         
+        int[] result = new int[nums.length];
         
-    }
+        result[0] = 1;
+        for(int i = 1; i < nums.length; i++ ) {
+            result[i] = result[i-1] * nums[i-1];
+        }
 
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
+        int last = 1 ;
+        
+
+        for(int i= nums.length-1; i >= 0 ; i-- ) {
+            result[i] = result[i] * last;
+            last *= nums[i]; 
+        }
+        
+        return result;
     }
 
     public void solve() throws Exception {
 
+        int[] a = new int[]{4,3,2,1,2};
+
+
+        int[] r = productExceptSelf(a);
+
+        for(int aa : r) {
+            out.print(aa + " ");
+        }
 
 
 
     } // End
 
-    public SubtreeOfAnotherTree() throws Exception {
+    public ProductofArrayExceptSelf() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -69,7 +70,7 @@ public class SubtreeOfAnotherTree {
 
     public static void main(String[] args) {
         try {
-            new SubtreeOfAnotherTree();
+            new ProductofArrayExceptSelf();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

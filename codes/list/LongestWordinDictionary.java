@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 31 | [ Thursday ]
- * Time: 05 : 57 : 53 
+ * Date: 2021 January 02 | [ Saturday ]
+ * Time: 01 : 18 : 05 
  */
 
 /**
@@ -14,44 +14,24 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class SubtreeOfAnotherTree {
+public class LongestWordinDictionary {
 
-    public void getInorderString(TreeNode s , String str ) {
-
-        if(s == null ) return ;
-
-        getInorderString(s.left, str);
-        str += s.val;
-        getInorderString(s.right, str);
-    }
-
-    public boolean isSubtree(TreeNode s, TreeNode t) {
-
-        String sStr = "";
-        getInorderString(s, sStr);
-
-        String tStr = "" ;
-        getInorderString(t, tStr);
-
-        return sStr.contains(tStr);
-        
-        
-    }
-
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
-    }
 
     public void solve() throws Exception {
 
+        int a[] = new int[3];
+        System.out.println(a.length);
+      //  a[a.length] = 3;
 
+        
+        String s = "aaa";
+        System.out.println(s.length());
 
-
+        s.charAt(s.length());
+       
     } // End
 
-    public SubtreeOfAnotherTree() throws Exception {
+    public LongestWordinDictionary() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -69,7 +49,7 @@ public class SubtreeOfAnotherTree {
 
     public static void main(String[] args) {
         try {
-            new SubtreeOfAnotherTree();
+            new LongestWordinDictionary();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

@@ -1,12 +1,14 @@
 import static java.lang.System.exit;
 import java.io.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 31 | [ Thursday ]
- * Time: 05 : 57 : 53 
+ * Date: 2021 January 01 | [ Friday ]
+ * Time: 07 : 38 : 23 
  */
 
 /**
@@ -14,44 +16,90 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class SubtreeOfAnotherTree {
+public class BackspaceStringCompare {
 
-    public void getInorderString(TreeNode s , String str ) {
 
-        if(s == null ) return ;
+    public boolean backspaceCompare(String a , String b) {
 
-        getInorderString(s.left, str);
-        str += s.val;
-        getInorderString(s.right, str);
+        int ap = a.length()-1;
+        int bp = b.length()-1;
+
+        while(ap >= 0 || bp >= 0) {
+
+            if(ap > 0) {
+            if( a.charAt(ap) == '#') {
+                int count = 0 ; 
+                while(a.charAt(ap) == '#') {
+                    count++;
+                    ap--;
+                }
+                ap -= count;
+                continue;
+            }
+        }
+
+        if(bp > 0) {
+            if( b.charAt(bp) == '#') {
+                int count = 0;
+                while(b.charAt(bp) == '#') {
+                    count++;
+                    bp--;
+                }
+                bp -= count;
+                continue;
+            }
+        }
+             
+        if(ap>=0 && bp >= 0) {
+            if(a.charAt(ap) != b.charAt(bp)) { 
+                return false;
+            }
+        }
+            ap--;
+            bp --;
+        
     }
 
-    public boolean isSubtree(TreeNode s, TreeNode t) {
 
-        String sStr = "";
-        getInorderString(s, sStr);
 
-        String tStr = "" ;
-        getInorderString(t, tStr);
+        if(ap <= 0 && bp <= 0 ) return true;
+        else return false;
 
-        return sStr.contains(tStr);
-        
-        
     }
+    
 
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
+
+
+     public boolean backspaceCompareRegex(String S, String T) {
+
+        Pattern pattern = Pattern.compile("[a-z]#", Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(S);
+
+        while( matcher.find() )  {
+            S = S.replaceAll("[a-z]#", "");
+            matcher = pattern.matcher(S);
+        }
+
+        matcher = pattern.matcher(T);
+        while( matcher.find() ) {
+            T = T.replaceAll("[a-z]#", "");
+            matcher = pattern.matcher(T);
+        }
+
+        S = S.replaceAll("#", "");
+        T = T.replaceAll("#", "");
+
+        return S.equals(T);
     }
 
     public void solve() throws Exception {
+        
 
+        System.out.print(backspaceCompare("ab##", "c#d#"));
 
+    } 
 
-
-    } // End
-
-    public SubtreeOfAnotherTree() throws Exception {
+    public BackspaceStringCompare() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -69,7 +117,7 @@ public class SubtreeOfAnotherTree {
 
     public static void main(String[] args) {
         try {
-            new SubtreeOfAnotherTree();
+            new BackspaceStringCompare();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

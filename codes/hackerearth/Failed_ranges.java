@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 31 | [ Thursday ]
- * Time: 05 : 57 : 53 
+ * Date: 2021 January 02 | [ Saturday ]
+ * Time: 10 : 13 : 37 
  */
 
 /**
@@ -14,44 +14,63 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class SubtreeOfAnotherTree {
-
-    public void getInorderString(TreeNode s , String str ) {
-
-        if(s == null ) return ;
-
-        getInorderString(s.left, str);
-        str += s.val;
-        getInorderString(s.right, str);
-    }
-
-    public boolean isSubtree(TreeNode s, TreeNode t) {
-
-        String sStr = "";
-        getInorderString(s, sStr);
-
-        String tStr = "" ;
-        getInorderString(t, tStr);
-
-        return sStr.contains(tStr);
-        
-        
-    }
-
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
-    }
+class Failed_ranges {
 
     public void solve() throws Exception {
 
+        int n = in.getInt();
+        int m = in.getInt();
+
+        int[] na = in.getIntArray(n);
+        int[] ma = in.getIntArray(m);
+
+        int x = in.getInt();
+        int y = in.getInt();
+
+        Map<Integer, List<String>> map = new HashMap<>();
+        List<Integer> list = new ArrayList<>();
+
+        for(int i = 0 ; i < n ; i++ ) {
+            for(int j = 0; j < m; j++ ) {
+
+                int sum = na[i] + ma[j];
+
+                List<String> pp = map.getOrDefault(sum, new ArrayList<String>());
+                pp.add(i +":" + j);
+
+                map.put(sum, pp);
+                list.add(sum);
+            }
+        }
+
+        Collections.sort(list);
+
+        Set<String> result = new HashSet<>();
+
+        for(int i = x; i< y-1; i++ ) {
+            int sum = list.get(i);
+            result.addAll( map.get(sum));
+        }
 
 
+        out.println(result.size());
 
+        List<String> sorted = new ArrayList<>();
+        sorted.addAll(result);
+
+
+        Collections.sort(sorted);
+        
+        for(String cc : sorted) {
+            
+            String[] ttt = cc.split(":");
+
+            out.print("(" + (Integer.parseInt(ttt[0]) + 1)  +"," + (Integer.parseInt(ttt[1]) + 1) + ") ");
+        }
+       
     } // End
 
-    public SubtreeOfAnotherTree() throws Exception {
+    public Failed_ranges() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -69,7 +88,7 @@ public class SubtreeOfAnotherTree {
 
     public static void main(String[] args) {
         try {
-            new SubtreeOfAnotherTree();
+            new Failed_ranges();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

@@ -1,12 +1,13 @@
 import static java.lang.System.exit;
 import java.io.*;
+import java.math.BigInteger;
 import java.util.*;
 
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 31 | [ Thursday ]
- * Time: 05 : 57 : 53 
+ * Date: 2021 January 02 | [ Saturday ]
+ * Time: 11 : 03 : 54 
  */
 
 /**
@@ -14,45 +15,48 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class SubtreeOfAnotherTree {
+  class Mathematically_beautiful_numbers {
 
-    public void getInorderString(TreeNode s , String str ) {
+    boolean isPossible(List<Long> list , int i, Long sum, Long a) {
 
-        if(s == null ) return ;
+       // out.println(sum );
 
-        getInorderString(s.left, str);
-        str += s.val;
-        getInorderString(s.right, str);
-    }
+        if(sum.equals(a)) return true;
 
-    public boolean isSubtree(TreeNode s, TreeNode t) {
+        if(i>list.size()-1) return false;
+        if(sum.compareTo(a) > 0) return false;
+         
+        return isPossible(list, i+1, sum, a) || isPossible(list, i+1, (sum + list.get(i)), a);
 
-        String sStr = "";
-        getInorderString(s, sStr);
-
-        String tStr = "" ;
-        getInorderString(t, tStr);
-
-        return sStr.contains(tStr);
-        
-        
-    }
-
-    public class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right ;
     }
 
     public void solve() throws Exception {
 
+        List<Long> dp = new ArrayList<>();
+        
+        Long a = in.getLong();
+        int k = in.getInt();
+
+        Long pow = 1l;
+        
+        while( pow <= a) {
+            dp.add(pow);
+            pow = dp.get(dp.size()-1) * k;
+        }
+
+        if(isPossible(dp, 0, 0l, a)) {
+            out.println("YES");
+        } else {
+            out.println("NO");
+        }
 
 
-
+    
+        
     } // End
 
-    public SubtreeOfAnotherTree() throws Exception {
-        boolean isMultipleTestCases = false;
+    public Mathematically_beautiful_numbers() throws Exception {
+        boolean isMultipleTestCases = true;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
 
@@ -69,7 +73,7 @@ public class SubtreeOfAnotherTree {
 
     public static void main(String[] args) {
         try {
-            new SubtreeOfAnotherTree();
+            new Mathematically_beautiful_numbers();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);
@@ -108,7 +112,7 @@ public class SubtreeOfAnotherTree {
             return Integer.parseInt(getString());
         }
 
-        public long getLong() {
+        public Long getLong() {
             return Long.parseLong(getString());
         }
 
@@ -119,8 +123,8 @@ public class SubtreeOfAnotherTree {
             return temp;
         }
 
-        public long[] getLongArray(int n) {
-            long[] temp = new long[n];
+        public Long[] getLongArray(int n) {
+            Long[] temp = new Long[n];
             for (int i = 0; i < n; i++)
                 temp[i] = getLong();
             return temp;

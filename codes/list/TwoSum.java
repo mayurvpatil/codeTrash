@@ -16,22 +16,11 @@ import java.util.*;
 
 public class TwoSum {
 
-    public int[] twoSum(int[] nums, int target) {
 
-        Map<Integer, Integer        
-
-        for(int i = 0 ; i < nums.length; i++ ) {
-
-            int n = nums[i];
-
-            if(dp[target-n] != -1) {
-                return new int[]{dp[target-n],i};
-            }
-
-            dp[n] = i;
-
-        }
-        
+    public class TreeNode{
+        int val;
+        TreeNode left;
+        TreeNode right ;
     }
 
 
