@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 04 | [ Monday ]
+ * Time: 10 : 36 : 23 
  */
 
 /**
@@ -14,34 +14,63 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
-
-    // Not optimised solution  
-
-
-    public int peakIndexInMountainArray(int[] arr) {
-
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
-            }
-        }
-
-        return max;
-    }
-
+  class Fair_Elections {
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
+        Integer john = in.getInt();
+        Integer jack = in.getInt();
 
-        System.out.println(peakIndexInMountainArray(list));
+        Long johnsum = 0l, jacksum = 0l;
 
+        Long[] pjohn = new Long[john];
+        Long[] pjack = new Long[jack];
+        
+        for( int i = 0 ; i < john; i++ ) {
+            Long val = in.getLong();
+            pjohn[i] = val;
+            johnsum += val; 
+        }
+
+        for(int i = 0 ; i < jack ; i++ ) {
+            Long val = in.getLong();
+            pjack[i] = val;
+            jacksum += val;
+        }
+
+        if(johnsum > jacksum ) {
+            out.println("0");
+            return;
+        }
+        
+        if(johnsum == jacksum ) {
+            out.println("1");
+            return;
+        }
+
+        Arrays.sort(pjohn);
+        Arrays.sort(pjack, Collections.reverseOrder());
+
+        int iterator = 0;
+        while(jacksum > johnsum) {
+
+            if(iterator >= jack && iterator >= john && pjack[iterator] < pjohn[iterator]) {
+                out.println("-1");
+                return;
+            }
+
+            johnsum = (johnsum - pjohn[iterator]) + pjack[iterator];
+            jacksum = (jacksum - pjack[iterator]) + pjohn[iterator];
+
+            iterator++;
+        }        
+
+        out.println(iterator);
+        return;
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
-        boolean isMultipleTestCases = false;
+    public Fair_Elections() throws Exception {
+        boolean isMultipleTestCases = true;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
 
@@ -58,7 +87,8 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new Fair_Elections();
+            exit(0);
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);
@@ -101,8 +131,8 @@ public class PeakIndexMountainArray {
             return Long.parseLong(getString());
         }
 
-        public int[] getIntArray(int n) {
-            int[] temp = new int[n];
+        public Integer[] getIntArray(int n) {
+            Integer[] temp = new Integer[n];
             for (int i = 0; i < n; i++)
                 temp[i] = getInt();
             return temp;

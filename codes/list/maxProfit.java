@@ -1,46 +1,92 @@
 import static java.lang.System.exit;
 import java.io.*;
 import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 03 | [ Sunday ]
+ * Time: 08 : 29 : 58 
  */
 
 /**
  * Public      - CodeForces
  * No modifier - CodeChef
  */
+ class maxProfit {
 
-public class PeakIndexMountainArray {
+    private static Map<Integer, Integer> sortByValue(Map<Integer, Integer> unsortMap, final boolean order)
+    {
+        List<Entry<Integer, Integer>> list = new LinkedList<>(unsortMap.entrySet());
 
-    // Not optimised solution  
+        // Sorting the list based on values
+        list.sort((obj1, obj2) -> order ? obj1.getValue().compareTo(obj2.getValue()) == 0
+                ? obj1.getKey().compareTo(obj2.getKey())
+                : obj1.getValue().compareTo(obj2.getValue()) : obj2.getValue().compareTo(obj1.getValue()) == 0
+                ? obj2.getKey().compareTo(obj1.getKey())
+                : obj2.getValue().compareTo(obj1.getValue()));
+        return list.stream().collect(Collectors.toMap(Entry::getKey, Entry::getValue, (a, b) -> b, LinkedHashMap::new));
 
+    }
 
-    public int peakIndexInMountainArray(int[] arr) {
+    public static void sortbyColumn(int arr[][], int col) 
+    { 
+        Arrays.sort(arr, new Comparator<int[]>() { 
+          @Override              
+          public int compare(final int[] entry1,  
+                             final int[] entry2) { 
+  
+            if (entry1[col] > entry2[col]) 
+                return 1; 
+            else
+                return -1; 
+          } 
+        }); 
+    } 
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
+    public int maximumUnits(int[][] boxTypes, int truckSize) {
+        
+        sortbyColumn(boxTypes, 1);
+
+        int cs = 0 ;
+        int u = 0;
+
+        for(int i = boxTypes.length-1 ; i >=0 ; i-- )  {
+
+            // key = type keep size track 
+            // value = unit
+
+            if(cs == truckSize) break;
+
+            int remaining = (truckSize - cs);
+
+            if(remaining > boxTypes[i][0]) {
+                cs +=  boxTypes[i][0];
+                u += ( boxTypes[i][1] *  boxTypes[i][0]);
+            } else {
+                cs += remaining;
+                u += remaining *  boxTypes[i][1];
             }
         }
 
-        return max;
+        return u;
+        
+        
     }
-
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
+        
+        int a[][]  = new int[][]{{2,1},{4,4},{3,1},{4,1},{2,4},{3,4},{1,3},{4,3},{5,3},{5,3}};
 
-        System.out.println(peakIndexInMountainArray(list));
 
+        System.out.println(maximumUnits(a, 13));
+       
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
+    public maxProfit() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -58,7 +104,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new maxProfit();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 04 | [ Monday ]
+ * Time: 04 : 29 : 25 
  */
 
 /**
@@ -14,34 +14,51 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
+  class Encoded_String {
 
-    // Not optimised solution  
+    public String encodeChar(String input) {
 
+        int start = 0 ;
+        int end = 15;
+        boolean inFirstHalf = true;
 
-    public int peakIndexInMountainArray(int[] arr) {
+        int mid = 0 ; 
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
+        for(int i = 0 ; i < 4 ; i++) {
+            mid = (start + end ) /2 ;
+            if(input.charAt(i) == '0') {
+                end = mid;
+                inFirstHalf = true;
+            } else {
+                start = mid + 1;
+                inFirstHalf = false;
             }
         }
 
-        return max;
+        if(inFirstHalf)
+            return Character.toString( (char) ( (char)'a' + (char) start));
+        else 
+            return Character.toString( (char) ((char)'a' + (char) end));
     }
-
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
+        in.getInt();
+        String operations = in.getLine();
+        StringBuilder result = new StringBuilder();
 
-        System.out.println(peakIndexInMountainArray(list));
+        for(int i = 0 ; i < operations.length(); i = i + 4 ) {
+            result.append(encodeChar(operations.substring(i, i + 4)));
+        }
+
+        out.println(result);
+
+
 
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
-        boolean isMultipleTestCases = false;
+    public Encoded_String() throws Exception {
+        boolean isMultipleTestCases = true;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
 
@@ -58,7 +75,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new Encoded_String();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

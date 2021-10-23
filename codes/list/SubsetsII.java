@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 10 | [ Sunday ]
+ * Time: 17 : 51 : 50 
  */
 
 /**
@@ -14,33 +14,80 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
-
-    // Not optimised solution  
+public class SubsetsII {
 
 
-    public int peakIndexInMountainArray(int[] arr) {
+    int[] n = null;
+    List<List<Integer>> result = new ArrayList<>();
+    
+    public boolean iscontain(List<Integer> current ) {
+        
+        Map<Integer, Integer> cmap = new HashMap<>();
+        for(Integer a : current) {
+            cmap.put(a, cmap.getOrDefault(a, 0) + 1);
+        }
+        
+        for(List<Integer> a : result) {
+            if(a.size() == current.size()) {
+                
+                Map<Integer, Integer> amap = new HashMap<>();
+                for(Integer aa : a) {
+                    amap.put(aa, amap.getOrDefault(aa, 0) + 1);
+                }
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
+                if(cmap.equals(amap)) return true;
             }
         }
-
-        return max;
+        return false;
     }
-
+    
+    public void updateList(List<Integer> current, int i) {
+       
+        if(i == n.length) {
+            
+            if(!iscontain(current)) {
+                result.add(current);            
+            }
+            return;
+        }
+        
+        updateList(new ArrayList<>(current), i + 1);
+        
+        List<Integer> cpy = new ArrayList<>(current);
+        
+        cpy.add(n[i]);
+        updateList(cpy, i+1);
+        
+    }
+    
+    
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        
+        n = nums;
+        updateList(new ArrayList<>(), 0);
+        return result;
+        
+    }
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
+        int[] a = new int[] { 1,2,2};
+        
+        List<List<Integer>> ss = subsetsWithDup(a);
 
-        System.out.println(peakIndexInMountainArray(list));
+        System.out.println("Output : ");
+
+        for(List<Integer> ww : ss) {
+            for(Integer aa : ww) {
+                System.out.print(aa + " ");
+            }
+            System.out.println("");
+        }
+
 
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
+    public SubsetsII() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -58,7 +105,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new SubsetsII();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 10 | [ Sunday ]
+ * Time: 03 : 02 : 28 
  */
 
 /**
@@ -14,33 +14,72 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
+public class WordSearch {
 
-    // Not optimised solution  
+     
+    private int n = 0 ; 
+    private int m = 0 ;
+        
+    private char[] w = null;
+    
+    public boolean isvalid(char[][] board, int i, int j, int a) {
+        
+        if(a == w.length) return true;
+        
+        if( i+1 < n && board[i+1][j] == w[a] ) {
+                board[i][j] = '1';
+                boolean result = isvalid(board, i+1, j, a+1);
+                if(result) return true;
+        } 
+        if( i-1 >= 0 && board[i-1][j] == w[a]) {
+                board[i][j] = '1';
+                boolean result = isvalid(board, i-1, j , a+1);
+                if(result) return true;
+        } 
+        if ( j + 1 < m && board[i][j+1] == w[a]) {
+                board[i][j] = '1';
+                boolean result = isvalid(board, i , j+1, a+1) ;
+                if(result) return true;
+        } 
+        
+        if (j - 1 >= 0 && board[i][j-1] == w[a]) {
+                board[i][j] = '1';
+                boolean result = isvalid(board, i, j-1, a+1);
+                if(result) return true;
+        }
+        return false;
+    }
+  
+    public boolean exist(char[][] board, String word) {
+        
+        n = board.length;
+        m = board[0].length;
+        w = word.toCharArray();
+        
+        for(int i = 0 ; i < n; i++ ) {
+            for(int j = 0 ; j < m; j++) {
+                if(board[i][j] == w[0]) {
 
-
-    public int peakIndexInMountainArray(int[] arr) {
-
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
+                    char[][] cpy =  Arrays.stream(board).map(char[]::clone).toArray(char[][]::new);
+                    if(isvalid(cpy, i , j, 1)) {
+                        return true;
+                    }
+                }
             }
         }
-
-        return max;
+        
+        return false;
+        
     }
-
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
-
-        System.out.println(peakIndexInMountainArray(list));
-
+        char[][] aa = new char[][] {{'C','A','A'},{'A','A','A'},{'B','C','D'}};
+        System.out.println(exist(aa, "AAB"));
+       
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
+    public WordSearch() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -58,7 +97,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new WordSearch();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

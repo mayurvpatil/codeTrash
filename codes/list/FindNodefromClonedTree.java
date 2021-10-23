@@ -5,42 +5,45 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 02 | [ Saturday ]
+ * Time: 17 : 29 : 19 
  */
 
 /**
  * Public      - CodeForces
  * No modifier - CodeChef
+ * 
+ * link : https://leetcode.com/explore/challenge/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3590/
  */
 
-public class PeakIndexMountainArray {
+class findNodefromClonedTree {
 
-    // Not optimised solution  
+    public class TreeNode {
+        int val ;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int v ) {val = v;}
+    }
 
+    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+        
+        if(original == null ) return null;
+        if(original == target) return cloned;
 
-    public int peakIndexInMountainArray(int[] arr) {
-
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
-            }
-        }
-
-        return max;
+        TreeNode lr = getTargetCopy(original.left, cloned.left, target);  
+        if(lr != null ) return lr;
+        
+        return getTargetCopy(original.right, cloned.right, target);
     }
 
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
 
-        System.out.println(peakIndexInMountainArray(list));
-
+       
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
+    public findNodefromClonedTree() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -58,7 +61,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new findNodefromClonedTree();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

@@ -1,0 +1,142 @@
+
+visit API();
+
+request 100 
+
+ XXXXX
+
+
+
+attribute not provided - optional 
+
+house 
+
+
+int 0 
+Integer null 
+
+database - 
+
+Table A and B
+B issue 
+
+insert int A 
+
+
+Class A {
+
+    int a = 0;
+
+    public A( int a ) {
+        this.a = a;
+    }
+}
+
+Class B {
+
+    int b = 0;
+
+    public B( int b ) {
+        this.b = b;
+    }
+
+
+}
+
+Class C extends A {
+
+    int c = 0;
+
+    public C( int c ) {
+        this.c = c;
+
+        super();
+    }
+
+   
+}
+
+
+// c = 10; b = 20 ; a = 30
+
+
+obj C = 
+
+
+
+static method 
+
+A.getInstance();
+
+static class A {
+
+    private final static A a = null;
+
+    private A() {
+    }
+
+
+    public A getInstance() {
+        if(a == null ) {
+            a = new A();
+        }
+        return a;
+    }
+
+}
+
+
+
+
+array object 
+fist and last name 
+
+
+sort base fist 
+
+if fistname is same then sort that object on last name 
+
+
+
+Class Name {
+
+    String first;
+    String last;
+
+
+}
+
+Name[] names = new Names[10];
+
+Arrays.sort(names, new Comparable<Name>() {
+
+    public compare(Name a, Name b) {
+
+        String fname = a.first; 
+        String sname = b.first;
+
+        if(fname.equals(sname)) {
+            b.last.compare(a.last);
+        } else {
+            fname.compare(sname)
+        }
+
+    }
+
+})
+
+
+
+
+
+6 match sticks equal lenght 
+
+4 quilatoral triangle 
+
+
+
+
+
+
+
+

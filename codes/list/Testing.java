@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 31 | [ Sunday ]
+ * Time: 16 : 28 : 12 
  */
 
 /**
@@ -14,33 +14,16 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
-
-    // Not optimised solution  
-
-
-    public int peakIndexInMountainArray(int[] arr) {
-
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
-            }
-        }
-
-        return max;
-    }
-
+public class Testing {
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
+        int[] array = new int[10];
 
-        System.out.println(peakIndexInMountainArray(list));
-
+       
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
+    public Testing() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -58,7 +41,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new Testing();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

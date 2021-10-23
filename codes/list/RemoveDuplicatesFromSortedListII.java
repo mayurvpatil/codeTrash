@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 06 | [ Wednesday ]
+ * Time: 00 : 35 : 31 
  */
 
 /**
@@ -14,33 +14,77 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
+public class RemoveDuplicatesFromSortedListII {
 
-    // Not optimised solution  
+    public ListNode createLL(int[] array) {
 
-
-    public int peakIndexInMountainArray(int[] arr) {
-
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
-            }
+        ListNode head = new ListNode(array[0]);
+        ListNode temp = head;
+    
+        for (int i = 1; i < array.length; i++) {
+                temp.next = new ListNode(array[i]);
+                temp = temp.next;
         }
-
-        return max;
+        return head;
     }
 
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
+    public ListNode deleteDuplicates(ListNode head) {
+        
+        if(head == null ) return head;
+        ListNode itr = null;
+        ListNode newhead = null;
+        
+        while(head != null ) {
+            ListNode last = head;
+            int pre = head.val;
+            int count = 0 ;
+            head = head.next;
+
+            while(head != null && head.val == pre) {
+                count++;
+                head = head.next;
+            }
+            
+            if(count == 0) {
+                if(itr == null ) {
+                    itr = last;
+                    newhead = last;
+                    itr.next = null;
+                } else {
+                    itr.next = last;
+                    itr = itr.next;
+                    itr.next = null;
+                }
+            }
+        }
+        return newhead;
+    }
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
 
-        System.out.println(peakIndexInMountainArray(list));
+        int[] b = new int[] {1,1};
 
+        ListNode aa = deleteDuplicates(createLL(b));
+
+        while(aa != null ) {
+            out.print(aa.val + " ");
+            aa = aa.next;
+        }
+
+        
+       
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
+    public RemoveDuplicatesFromSortedListII() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -58,7 +102,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new RemoveDuplicatesFromSortedListII();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

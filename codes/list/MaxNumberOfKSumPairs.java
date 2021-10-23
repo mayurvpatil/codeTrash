@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 18 | [ Monday ]
+ * Time: 23 : 27 : 45 
  */
 
 /**
@@ -14,33 +14,46 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
-
-    // Not optimised solution  
+public class MaxNumberOfKSumPairs {
 
 
-    public int peakIndexInMountainArray(int[] arr) {
+    public int maxOperations(int[] nums, int k) {
+        
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        
+        for(int a : nums ) {
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
+            if(a >= k ) continue;
+            
+            int find = k - a;
+            if(map.containsKey(find)) {
+                
+                if(map.get(find) == 1) map.remove(find);
+                else {
+                    map.put(find, map.get(find) - 1);
+                }
+                count++;
+            } else {
+                map.put(a, map.getOrDefault(a, 0) + 1);
             }
+            
         }
-
-        return max;
+        
+        return count;
+        
     }
-
 
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
+        int[] aa = new int[]{2,5,4,4,1,3,4,4,1,4,4,1,2,1,2,2,3,2,4,2};
+        int k = 3;
 
-        System.out.println(peakIndexInMountainArray(list));
-
+        System.out.println(maxOperations(aa, k));
+       
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
+    public MaxNumberOfKSumPairs() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -58,7 +71,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new MaxNumberOfKSumPairs();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

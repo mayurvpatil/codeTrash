@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 04 | [ Monday ]
+ * Time: 20 : 09 : 29 
  */
 
 /**
@@ -14,34 +14,46 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
+public class A_Cards_for_Friends {
 
-    // Not optimised solution  
+    public int  cut(int w, int h ) {
 
+        if(w < 1 ) return 0;
+        if(h < 1 ) return 0;
 
-    public int peakIndexInMountainArray(int[] arr) {
+        if( w%2 == 0 && h%2 == 0 ) {
+            return 1 + Math.max(cut(w/2, h) , cut(w, h/2));
+        } 
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
-            }
-        }
+        if(w%2 == 0 && h%2!= 0 ) {
+            return 1 + cut(w/2,h);
+        } 
 
-        return max;
+        if(w%2 != 0 && h%2 == 0 ) {
+            return 1 + cut(w/2,h);
+        } 
+        
+        return 0;
+
     }
 
-
     public void solve() throws Exception {
+        
+        int w = in.getInt();
+        int h = in.getInt();
+        int n = in.getInt();
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
+        int cuts = cut(w, h);
 
-        System.out.println(peakIndexInMountainArray(list));
-
+        if(cuts >=  n) {
+            out.println("YES");
+        } else {
+            out.println("NO");
+        }
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
-        boolean isMultipleTestCases = false;
+    public A_Cards_for_Friends() throws Exception {
+        boolean isMultipleTestCases = true;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
 
@@ -58,7 +70,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new A_Cards_for_Friends();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

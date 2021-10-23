@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 04 | [ Monday ]
+ * Time: 20 : 34 : 49 
  */
 
 /**
@@ -14,34 +14,43 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
+public class B_Fair_Division {
 
-    // Not optimised solution  
+    public void solve() throws Exception {
+        
+        int n = in.getInt();
+       
+        int o = 0;
+        int t = 0;
 
+        for(int i = 0 ; i < n; i++ ) {
+            
+            int val = in.getInt();
 
-    public int peakIndexInMountainArray(int[] arr) {
-
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
+            if(val == 1 ) { 
+                o++;
+            } else {
+                t++;
             }
         }
 
-        return max;
-    }
+        int sum = o+(t*2);
 
+        if(sum%2 != 0) {
+            out.println("NO");
+        } else  if(o%2 == 0 && t%2 == 0) {
+            out.println("YES");
+        } else if(o%2 ==1) {
+            out.println("YES");
+        } else {
+            out.println("NO");
+        }
 
-    public void solve() throws Exception {
-
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
-
-        System.out.println(peakIndexInMountainArray(list));
 
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
-        boolean isMultipleTestCases = false;
+    public B_Fair_Division() throws Exception {
+        boolean isMultipleTestCases = true;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
 
@@ -58,7 +67,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new B_Fair_Division();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

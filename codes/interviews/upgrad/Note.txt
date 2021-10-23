@@ -1,0 +1,70 @@
+
+
+Link : https://meet.google.com/fvm-bqdk-pvy?hs=224
+
+
+design application buying and selling 
+
+block some share and buy 
+real time feeds from system 
+
+system - 
+
+monitory automaticaly - 5 at a time 
+
+1M - DAU
+5M - Read requests per day
+
+Data : 
+
+stocks {
+    company:
+    price: 
+}
+
+API : 
+updateStockPrice(company, newValue);
+getStockPrice(company);
+
+buyStock(UserId, company, stockUnits);
+sellStock(UserId, company, stockUnits);
+User(name, address, damat details , etc);
+
+Discuss blocking stock** 
+
+Sharding :
+
+Letnecy : lets assume, should be quick because this might effect on consistancy
+
+
+
+
+1. AT UI : 
+Long Polling - NO  
+WebSocket  
+
+2. Cache
+
+if used, we need to update cache as well as db. if any updates
+
+
+M
+- Login 
+
+--- 
+
+jar FILE  CACHING JAR
+
+
+cache configuration( cache eviction property )
+add/Store(data);
+get/fetch(filter);
+update(data);
+
+// remove(data);
+
+cache hit/miss related
+
+
+
+end user can include its dependency to plug and use

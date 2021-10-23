@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 04 | [ Monday ]
+ * Time: 03 : 48 : 17 
  */
 
 /**
@@ -14,34 +14,43 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
+  class Chef_and_Division_3 {
 
-    // Not optimised solution  
+    public void solve() throws Exception {
+        int n = in.getInt(), k = in.getInt(), d = in.getInt();
+        
+        long currentStatus = 0 ;
+        long maxDays = 0 ; // result
+        for(int i = 0 ; i < n ; i++ ) {
+            
+            long val = in.getInt();
 
+            if(maxDays >= d) break;
 
-    public int peakIndexInMountainArray(int[] arr) {
+            long calculatedValue = currentStatus + val;
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
+            if(calculatedValue > k) {
+                maxDays += calculatedValue / k;
+                currentStatus = calculatedValue % k;
+                if(maxDays >= d) {
+                    maxDays = d;
+                    break;
+                }
+            } else {
+                currentStatus += val;
             }
         }
 
-        return max;
-    }
+        if(currentStatus >= k) {
+            maxDays += currentStatus / k;
+        }
 
-
-    public void solve() throws Exception {
-
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
-
-        System.out.println(peakIndexInMountainArray(list));
+        out.println(maxDays);
 
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
-        boolean isMultipleTestCases = false;
+    public Chef_and_Division_3() throws Exception {
+        boolean isMultipleTestCases = true;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
 
@@ -58,7 +67,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new Chef_and_Division_3();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);

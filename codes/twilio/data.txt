@@ -1,0 +1,52 @@
+
+
+twilio
+
+
+------ Arranging names in ascending order , firstly by Name and then by roman numerals.    https://leetcode.com/discuss/interview-question/1028269/Twilio-or-OA-or-SWE-2021
+
+------  Maximum in Minimum sliding window (Title : Disk space analysis) :https://leetcode.com/discuss/interview-question/1105827/Twillio-OA-or-SDE-2-or-India
+
+ ---- Given two arrays of strings, one containing the prefixes (area code) and one with a long string of numbers (phone numbers), return the longest prefix corresponding to all phone numbers.
+
+Input: Area Code: ["213", "21358", "1234", "12"]
+Phone Numbers: ["21349049", "1204539492
+
+https://leetcode.com/discuss/interview-question/394697/Twilio-or-OA-2019
+
+-----
+
+Input is a string of characters that represents a text message. You need to segment this message into chunks of messages each of length 160 characters and add suffix "(1/5)" (representing pagination) at the end of each segmented message (Length of "(1/5)" is included in 160 length limit).
+
+Input: "njdksjfn jdfnds kjfdklsjf jsdofjsd f jdslkjfgdslkngdslkjg fl
+
+https://leetcode.com/discuss/interview-question/394697/Twilio-or-OA-2019 
+
+------
+
+
+
+Validate parentheses, possible values are: [ , ], <, > and self closing pipe |
+
+There can be any number of characters in between, we should skip them during analysis.
+
+
+https://leetcode.com/discuss/interview-question/347178/Twilio-or-Validate-parentheses-with-self-closing-symbols
+
+
+-----
+
+
+Given an array which contains 1-9 keys in a phone dial pad. To traverse this key pad you can only move either 1 step up/down/left/right first and then 3 steps agian in up/down/left/right direction or vice versa.
+
+Find out the number of unique destinations you can reach with a path of length 4 starting from a source key. Additionaly this dial pad has one disabled key (x), so you cannot take that path.
+
+Example:
+Input: [1,2,3,4,x,6,7,8,9] , Source: 3
+Output: 7  
+
+https://leetcode.com/discuss/interview-question/292460/Twilio-Onsite%3A-Find-the-number-of-unique-destinations
+
+
+-----
+

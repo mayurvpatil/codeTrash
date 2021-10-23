@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * @author mayurvpatil
  *
- * Date: 2020 December 25 | [ Friday ]
- * Time: 12 : 30 : 43 
+ * Date: 2021 January 08 | [ Friday ]
+ * Time: 00 : 59 : 38 
  */
 
 /**
@@ -14,33 +14,92 @@ import java.util.*;
  * No modifier - CodeChef
  */
 
-public class PeakIndexMountainArray {
-
-    // Not optimised solution  
+public class LongestSubstringWithoutRepeatingCharacters {
 
 
-    public int peakIndexInMountainArray(int[] arr) {
+    public int lengthOfLongestSubstring(String s) {
+        
+        int max = 0 ;
+        Map<Character,Integer> map = new HashMap<>();
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i] && arr[i] > max) {
-                max = i;
+        int i = 0 ; 
+        for(int j  = 0 ; j < s.length(); j++) {
+
+            Character c = s.charAt(j);
+
+            if(map.containsKey(c)) {
+                i = Math.max(map.get(c) + 1, i);
             }
+
+            if(max < (j - i + 1)) {
+                max = (j - i + 1);
+            }
+
+            map.put(c, j);
+
         }
 
         return max;
+
     }
 
 
+    public int lengthOfLongestSubstringaa(String s) {
+
+        if(s.length() == 0) return 0;
+        if(s.length() == 1) return 1;
+
+        
+        Map<Character, Integer> map = new HashMap<>();
+        
+        int max = 0;
+        
+        int start = 0;
+        int i = 0 ;
+
+        int lastUpdated = 0 ;
+        for( i = 0; i< s.length(); i++) {
+
+            
+                if(map.containsKey(s.charAt(i))) {
+                    
+                    int newCount;
+                    if(lastUpdated > start ) {
+                        newCount = i - lastUpdated ;
+                    } else {
+                        newCount = i - start;
+                    }
+
+                    if( newCount > max) {
+                        max = newCount ;
+                    }
+                    start = map.get(s.charAt(i)) + 1;
+                    lastUpdated = i;
+                    map.put(s.charAt(i), i );
+                } else {
+                    map.put(s.charAt(i), i);
+                }
+        }
+
+        if(max == 0 && s.length() != 0 ) return s.length();
+
+        if(lastUpdated < s.length()) {
+            return max + (s.length() - lastUpdated);
+        }
+        
+        return max ;
+
+        
+    }
+    
+
     public void solve() throws Exception {
 
-        int[] list = new int[] {24,69,100,99,79,78,67,36,26,19};
-
-        System.out.println(peakIndexInMountainArray(list));
-
+        System.out.println(lengthOfLongestSubstring("sdfasaasdafsd"));
+       
     } // End
 
-    public PeakIndexMountainArray() throws Exception {
+    public LongestSubstringWithoutRepeatingCharacters() throws Exception {
         boolean isMultipleTestCases = false;
         in = new InputReader(System.in);
         out = new PrintWriter(System.out);
@@ -58,7 +117,7 @@ public class PeakIndexMountainArray {
 
     public static void main(String[] args) {
         try {
-            new PeakIndexMountainArray();
+            new LongestSubstringWithoutRepeatingCharacters();
         } catch (Throwable e) {
             e.printStackTrace();
             exit(1);
